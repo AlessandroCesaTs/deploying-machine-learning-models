@@ -38,6 +38,9 @@ jobs:
           path: ~/project
       - *prepare_tox
       - run:
+          name: Debugging Environment variable
+          command: echo "GEMFURY KEY = $GEMFURY_PUSH_URL"
+      - run:
           name: Runnning app tests
           command: |
             tox
