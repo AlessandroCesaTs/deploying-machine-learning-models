@@ -6,9 +6,8 @@ python-multipart==0.0.20
 pydantic==1.10.21
 typing_extensions==4.12.2
 loguru==0.7.3
-tid-regression-model==4.0.5
+tid-regression-model==4.0.6
 # We will explain this in the course
-tid-regression-model==4.0.5
 #git+https://github.com/AlessandroCesaTs/my-tid-regression-model-3.2.0.git@main
 feature-engine==1.5.2  # breaking change in v1.6.0
 #uvicorn>=0.20.0,<0.30.0
