@@ -1,3 +1,5 @@
+--extra-index-url=${PIP_EXTRA_INDEX_URL}
+
 uvicorn==0.29.0
 fastapi==0.115.11
 python-multipart==0.0.20
@@ -6,7 +8,8 @@ typing_extensions==4.12.2
 loguru==0.7.3
 # We will explain this in the course
 #git+https://github.com/AlessandroCesaTs/my-tid-regression-model-3.2.0.git@main
--e ../model-package
+#-e ../model-package
+tid-regression-model==4.0.6
 feature-engine==1.5.2  # breaking change in v1.6.0
 #uvicorn>=0.20.0,<0.30.0
 #fastapi>=0.88.0,<1.0.0
