@@ -137,7 +137,6 @@ jobs:
                 --requires-compatibilities FARGATE \
                 --cpu 1024  \
                 --memory 8192 \
-                --task-role-arn arn:aws:ecs:us-east-1:640168410698:task-definition/mytask:3 \
                 --execution-role-arn arn:aws:iam::640168410698:role/ecsTaskExecutionRole \
                 --container-definitions '[{
                     "name": "mycontainer",
