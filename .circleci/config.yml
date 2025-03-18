@@ -146,7 +146,7 @@ jobs:
             TASK_REVISION=$(aws ecs describe-task-definition --task-definition mytask --query "taskDefinition.revision" --output text)
             aws ecs update-service \
               --cluster mycluster \
-              --service my_service_new_3 \
+              --service myservice_new_3 \
               --task-definition mytask:$TASK_REVISION \
               --force-new-deployment
 
