@@ -1,7 +1,6 @@
 NAME=my-ml-api
 COMMIT_ID=$(shell git rev-parse HEAD)
 
-
 build-ml-api-aws:
 	docker build --build-arg PIP_EXTRA_INDEX_URL=${PIP_EXTRA_INDEX_URL} -t $(NAME):$(COMMIT_ID) .
 
