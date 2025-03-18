@@ -140,7 +140,7 @@ jobs:
                     "memory": 8192,
                     "memoryReservation": 6144,
                     "portMappings": [{"containerPort": 5000, "hostPort": 5000}],
-                    "requires_compatibilities" = ["FARGATE"]
+                    "requires_compatibilities": ["FARGATE"]
                 }]'
 
             # Get latest task definition revision
