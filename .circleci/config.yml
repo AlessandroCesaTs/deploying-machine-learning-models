@@ -130,7 +130,7 @@ jobs:
             echo "Logging into AWS ECR..."
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com
             make build-ml-api-aws tag-ml-api push-ml-api-aws
-            export COMMIT_ID=$(git rev-parse --short HEAD)
+            export COMMIT_ID=$(git rev-parse HEAD)
             aws ecs register-task-definition \
                 --family mytask \
                 --network-mode awsvpc \
