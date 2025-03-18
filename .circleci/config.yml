@@ -286,28 +286,6 @@ workflows:
   version: 2
   deploy_pipeline:
     jobs:
-      #- section_07_test_package
-      #- section_07_test_app:
-          #requires:
-           # - section_07_test_package
-      #- section_07_deploy_app_to_railway:
-       #   requires:
-           # - section_07_test_app
-        #  filters:
-         #   branches:
-          #    only:
-           #     - master
-            #    - demo
-      # upload after git tags are created
-      #- section_07_test_and_upload_regression_model:
-       #   <<: *tags_only
-
-      #- section_08_deploy_app_container_via_railway:
-       #  filters:
-        #   branches:
-         #    only:
-          #     - master
-           #    - demo
     - section_08_publish_docker_image_to_aws:
         filters:
           branches:
