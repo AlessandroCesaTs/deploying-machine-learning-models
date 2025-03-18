@@ -135,7 +135,7 @@ jobs:
                 --family mytask \
                 --network-mode awsvpc \
                 --requires-compatibilities FARGATE \
-                --cpu 0 \
+                --cpu 1 \
                 --memory 8192 \
                 --container-definitions '[{
                     "name": "mycontainer",
