@@ -120,6 +120,7 @@ jobs:
       - run:
           name: Publishing docker image to aws ECR
           command: |
+            cd section-08-deploying-with-containers
             pip install awscli
             eval $(aws ecr get-login --no-include-email --region us-east-1)
             make build-ml-api-aws tag-ml-api push-ml-api-aws
