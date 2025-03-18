@@ -140,7 +140,7 @@ jobs:
                     "cpu": 0,
                     "memory": 8192,
                     "memoryReservation": 6144,
-                    "portMappings": [{"containerPort": 5000, "hostPort": 5000}],
+                    "portMappings": [{"containerPort": 5000, "hostPort": 5000}]
                 }]'
 
             # Get latest task definition revision
