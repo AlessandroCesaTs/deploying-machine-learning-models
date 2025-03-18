@@ -122,27 +122,33 @@ jobs:
           command: |
             cd section-08-deploying-with-containers
             pip install awscli
-                  # Verify AWS credentials
-            echo "Checking AWS credentials..."
             aws configure set aws_access_key_id $AWS_ACCESS_KEY
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
             aws configure set default.region us-east-1
-      
-            # Debug AWS credentials
-            echo "AWS Credentials Set:"
-            aws configure list
-      
-            # Check if AWS credentials are valid
-            echo "Checking identity..."
-            aws sts get-caller-identity || { echo "AWS credentials are incorrect!"; exit 1; }
-      
+            
             # Authenticate with AWS ECR
             echo "Logging into AWS ECR..."
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com
-
-
             make build-ml-api-aws tag-ml-api push-ml-api-aws
-  #          aws ecs update-service --cluster mycluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
+            export COMMIT_ID=$(git rev-parse --short HEAD)
+            aws ecs register-task-definition \
+                --family mytask \
+                --container-definitions '[{
+                    "name": "mycontainer",
+                    "image": "'${AWS_ACCOUNT_ID}'.dkr.ecr.us-east-1.amazonaws.com/my-ml-api:'$COMMIT_ID'",
+                    "cpu": 0,
+                    "memory": 8192,
+                    "memoryReservation": 6144,
+                    "portMappings": [{"containerPort": 5000, "hostPort": 5000}]
+                }]'
+
+            # Get latest task definition revision
+            TASK_REVISION=$(aws ecs describe-task-definition --task-definition mytask --query "taskDefinition.revision" --output text)
+            aws ecs update-service \
+              --cluster mycluster \
+              --service my_service_new_3 \
+              --task-definition mytask:$TASK_REVISION \
+              --force-new-deployment
 
 
 
