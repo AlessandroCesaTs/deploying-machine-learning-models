@@ -122,7 +122,9 @@ jobs:
           command: |
             cd section-08-deploying-with-containers
             pip install awscli
-            aws ecr get-login-password  --region us-east-1 | docker login --username AWS --password-stdin 640168410698.dkr.ecr.us-east-1.amazonaws.com
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws  configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set default.region us-east-1
             make build-ml-api-aws tag-ml-api push-ml-api-aws
   #          aws ecs update-service --cluster mycluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
 
