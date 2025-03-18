@@ -124,7 +124,6 @@ jobs:
             pip install awscli
             aws configure set aws_access_key_id=$AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
-#            aws configure set default.region us-east-1
             aws sts get-caller-identity
             make build-ml-api-aws tag-ml-api push-ml-api-aws
   #          aws ecs update-service --cluster mycluster --service custom-service --task-definition  first-run-task-definition --force-new-deployment
