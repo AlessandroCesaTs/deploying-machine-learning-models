@@ -133,6 +133,7 @@ jobs:
             export COMMIT_ID=$(git rev-parse --short HEAD)
             aws ecs register-task-definition \
                 --family mytask \
+                --network-mode awsvpc \
                 --requires-compatibilities FARGATE \
                 --container-definitions '[{
                     "name": "mycontainer",
