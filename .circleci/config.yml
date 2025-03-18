@@ -286,11 +286,11 @@ workflows:
   version: 2
   deploy_pipeline:
     jobs:
-    - section_08_publish_docker_image_to_aws:
-        filters:
-          branches:
-            only:
-              - master
+      - section_08_publish_docker_image_to_aws:
+          filters:
+            branches:
+              only:
+                - master
 
 #  test-all:
 #    jobs:
