@@ -133,6 +133,7 @@ jobs:
             export COMMIT_ID=$(git rev-parse --short HEAD)
             aws ecs register-task-definition \
                 --family mytask \
+                --requires-compatibilities FARGATE \
                 --container-definitions '[{
                     "name": "mycontainer",
                     "image": "'${AWS_ACCOUNT_ID}'.dkr.ecr.us-east-1.amazonaws.com/my-ml-api:'$COMMIT_ID'",
@@ -140,7 +141,6 @@ jobs:
                     "memory": 8192,
                     "memoryReservation": 6144,
                     "portMappings": [{"containerPort": 5000, "hostPort": 5000}],
-                    "requires_compatibilities": ["FARGATE"]
                 }]'
 
             # Get latest task definition revision
