@@ -135,8 +135,6 @@ jobs:
                 --family mytask \
                 --network-mode awsvpc \
                 --requires-compatibilities FARGATE \
-                --cpu 0 \
-                --memory 8192 \
                 --container-definitions '[{
                     "name": "mycontainer",
                     "image": "'${AWS_ACCOUNT_ID}'.dkr.ecr.us-east-1.amazonaws.com/my-ml-api:'$COMMIT_ID'",
