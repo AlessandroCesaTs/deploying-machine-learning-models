@@ -137,3 +137,4 @@ packages/neural_network_model/neural_network_model/datasets/training_data_refere
 .DS_Store
 
 packages/ml_api/uploads/*
+aws_keys.txt
